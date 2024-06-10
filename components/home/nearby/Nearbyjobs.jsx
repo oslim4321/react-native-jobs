@@ -17,7 +17,12 @@ const Nearbyjobs = () => {
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Nearby Jobs</Text>
         <TouchableOpacity>
-          <Text style={styles.headerBtn}>Show All</Text>
+          <Text
+            onPress={() => router.push("/popular_job_list")}
+            style={styles.headerBtn}
+          >
+            Show All
+          </Text>
         </TouchableOpacity>
       </View>
 

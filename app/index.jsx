@@ -7,9 +7,12 @@ import {
   Welcome,
 } from "../components";
 import { COLORS, SIZES, icons, images } from "../constants";
+import { useState } from "react";
 
 const Home = () => {
   const router = useRouter();
+  const [serachTerm, setSearchTerm] = useState("");
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       <Stack.Screen
@@ -27,8 +30,16 @@ const Home = () => {
       />
 
       <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{ lex: 1, padding: SIZES.medium }}>
-          <Welcome />
+        <View style={{ flex: 1, padding: SIZES.medium }}>
+          <Welcome
+            serachTerm={serachTerm}
+            setSearchTerm={setSearchTerm}
+            handleClick={() => {
+              if (serachTerm) {
+                router.push(`/search/${serachTerm}`);
+              }
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>

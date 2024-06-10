@@ -31,7 +31,11 @@ const JobDetails = () => {
   const [refreshing, setrefreshing] = useState(false);
   const [activeTab, setactiveTab] = useState(tabs[0]);
 
-  function onRefresh() {}
+  const onRefresh = useCallback(() => {
+    setrefreshing(true);
+    refresh();
+    setrefreshing(false);
+  }, []);
 
   function displayTabContent() {
     switch (activeTab) {
@@ -44,7 +48,7 @@ const JobDetails = () => {
         );
       case "About":
         return (
-          <JobAbout info={data[0].job_description ?? "No data Provided"} />
+          <JobAbout info={data[0]?.job_description ?? "No data Provided"} />
         );
       case "Responsibilities":
         return (
